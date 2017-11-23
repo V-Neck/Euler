@@ -10,7 +10,7 @@ def place_values(n):
     return values
 
 def is_palindrome(n):
-    # There must be a faster way
+    # There must be a faster way·
     return place_values(n) == list(reversed(place_values(n)))
 
 def largest_palindrome_of_2_n_digit_numbers(n):
