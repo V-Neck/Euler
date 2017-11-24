@@ -1,24 +1,19 @@
 import numpy as np
-from math import ceil
+from prob3 import factorize
 
-def place_values(n):
-    values = []
-    for place in range(int(np.log10(n)) + 1):
-        x = n % 10
-        n /= 10
-        values.append(x)
-    return values
+def cancel(ll):
+    l0 = []
+    for l in ll:
+        for i in l:
+            if i in l0:
+                l0.remove(i)
+        l0.extend(l)
+    return l0
 
-def is_palindrome(n):
-    # There must be a faster way·
-    return place_values(n) == list(reversed(place_values(n)))
+primes = []
+n = 20
 
-def largest_palindrome_of_2_n_digit_numbers(n):
-    largest_seen = 0
-    for i in range(10**(n) -1, 10**(n-1) -1, -1):
-        for j in range(i, 10**(n-1) -1, -1):
-            if is_palindrome(i*j) and i*j > largest_seen:
-                largest_seen = i*j
-    return largest_seen
+for i in range(2, n + 1):
+    primes.append(factorize(i))
 
-largest_palindrome_of_2_n_digit_numbers(3)
+np.product(cancel(primes))
