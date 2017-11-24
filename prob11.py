@@ -1,18 +1,15 @@
 from math import sqrt
-from prob3 import is_prime
 
-def first_n_primes(n):
+def primes_below_n(n):
     # By definition
     primes = [2]
 
     # Check if m is prime
     m = 3
 
-    while len(primes) < n:
+    while m < n:
         is_prime = True
         for p in primes:
-            if sqrt(p) > m:
-                break
             if m % p == 0:
                 is_prime = False
                 break
@@ -22,5 +19,5 @@ def first_n_primes(n):
         m += 2
     return primes
 
-if __name__ == "__main__":
-    print first_n_primes(10001)[-1]
+x = primes_below_n(2*10**5)
+sum(x)
