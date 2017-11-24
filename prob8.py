@@ -20,5 +20,5 @@ def first_n_primes(n):
         m += 2
     return primes
 
-
-first_n_primes(10001)[-1]
+if __name__ == "__main__":
+    print first_n_primes(10001)[-1]
