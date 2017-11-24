@@ -1,5 +1,4 @@
 from math import sqrt
-from prob3 import is_prime
 
 def first_n_primes(n):
     # By definition
