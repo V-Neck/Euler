@@ -44,4 +44,4 @@ for hundred in range(10):
 
 names[1000] = "onethousand"
 
-len("".join(names.values()))
+print (len("".join(names.values())))
