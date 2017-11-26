@@ -19,35 +19,8 @@ triangle = triangle.split("\n")
 
 triangle = [[int(i) for i in row.split(" ")] for row in triangle]
 
+for level in xrange(len(triangle) - 1, 0, -1):
+    for i in range(len(triangle[level]) -1):
+        triangle[level - 1][i] += max([triangle[level][i], triangle[level][i + 1]])
 
-cursor = -1
-largest = -1
-
-# Finds the maximum sum of the bottom two rows
-# first block checks the edges
-cursor = argmax([triangle[-1][0] + triangle[-2][0], triangle[-1][-1] + triangle[-2][-1]])
-cursor *= len(triangle[level])
-largest = triangle[-1][cursor]
-
-# second block checks the middle
-for i in range(1, len(triangle[-1]) - 2):
-    for direction in range(-1, 1):
-        if triangle[-1][i] + triangle[-2][i + direction] > largest:
-            largest = triangle[-1][i] + triangle[-2][i + direction]
-            cursor = i + direction
-
-# Now that the max for the bottom two rows is established, we work out way up the triangle
-for level in xrange(len(triangle) - 3, -1, -1):
-    if cursor == 0:·
-        total += triangle[level][0]
-    elif cursor == len(triangle[level]):
-        total += triangle[level][-1]
-        cursor = len(triangle[level]) -1
-    else:
-        direction = argmax([triangle[level][cursor - 1], triangle[level][cursor]])
-        total += triangle[level][cursor + direction - 1]
-        cursor += (direction - 1)
-    triangle[level][cursor] = str(triangle[level][cursor])
-    print triangle[level]
-
-total
+print triangle[0][0]
