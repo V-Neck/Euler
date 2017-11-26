@@ -44,4 +44,5 @@ for hundred in range(10):
 
 names[1000] = "onethousand"
 
-print (len("".join(names.values())))
+if __name__ == "__main__":
+    print (len("".join(names.values())))
